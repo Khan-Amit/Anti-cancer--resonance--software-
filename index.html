@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ACRS v3.0 — Clinical Index</title>
+    <title>ACRS v3.0 — Clinical Index (Hospital Ready)</title>
     <style>
         /* ============================================================
            RESET & BASE
@@ -26,7 +26,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             width: 100%;
             background: white;
             border-radius: 32px;
@@ -39,7 +39,7 @@
            ============================================================ */
         .header {
             background: #0a1128;
-            padding: 20px 36px;
+            padding: 18px 36px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -89,11 +89,11 @@
         }
 
         /* ============================================================
-           HERO / SYSTEM STATUS
+           HERO / STATUS
            ============================================================ */
         .hero {
             background: linear-gradient(135deg, #0a1128 0%, #1a2a5a 100%);
-            padding: 24px 36px;
+            padding: 20px 36px;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -102,7 +102,7 @@
             gap: 12px;
         }
         .hero h1 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
         }
         .hero h1 span {
@@ -131,20 +131,20 @@
         }
 
         /* ============================================================
-           MAIN GRID: INPUT | RESULTS
+           MAIN GRID
            ============================================================ */
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            padding: 36px 40px;
+            padding: 30px 36px;
             background: #f8faff;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .main-grid {
                 grid-template-columns: 1fr;
-                padding: 24px;
+                padding: 20px;
             }
         }
 
@@ -154,7 +154,7 @@
         .input-card {
             background: white;
             border-radius: 20px;
-            padding: 28px 30px;
+            padding: 24px 26px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             border: 1px solid #e4edf6;
         }
@@ -169,64 +169,76 @@
         .input-card .subtitle {
             color: #4a6a8a;
             font-size: 14px;
-            margin-bottom: 22px;
-            padding-bottom: 14px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
             border-bottom: 1px solid #e4edf6;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         .form-group label {
             display: block;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             color: #1a2a3a;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
         .form-group label .req {
             color: #d32f2f;
         }
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 1.5px solid #dce4ec;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 14px;
             transition: border 0.2s;
             background: #fafcff;
+            font-family: inherit;
         }
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: #1976d2;
             outline: none;
             box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.08);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 50px;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 12px;
+        }
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
         }
 
         .btn-group {
             display: flex;
-            gap: 12px;
-            margin-top: 18px;
+            gap: 10px;
+            margin-top: 16px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 14px 28px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 12px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: transform 0.15s, box-shadow 0.2s;
             flex: 1;
-            min-width: 140px;
+            min-width: 120px;
         }
         .btn:hover {
             transform: translateY(-2px);
@@ -260,17 +272,26 @@
         .btn-warning:hover {
             background: #e65100;
         }
+        .btn-print {
+            background: #455a64;
+            color: white;
+        }
+        .btn-print:hover {
+            background: #37474f;
+        }
 
         /* ============================================================
-           RIGHT: RESULTS / INSTRUCTIONS
+           RIGHT: RESULTS
            ============================================================ */
         .results-card {
             background: white;
             border-radius: 20px;
-            padding: 28px 30px;
+            padding: 24px 26px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             border: 1px solid #e4edf6;
-            min-height: 400px;
+            min-height: 500px;
+            max-height: 800px;
+            overflow-y: auto;
         }
 
         .results-card h2 {
@@ -283,20 +304,19 @@
         .results-card .subtitle {
             color: #4a6a8a;
             font-size: 14px;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid #e4edf6;
         }
 
         #output {
             background: #fafcff;
             border-radius: 14px;
-            padding: 20px;
+            padding: 18px;
             min-height: 280px;
             border: 1px solid #e4edf6;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
-            white-space: pre-wrap;
             color: #1a2a3a;
         }
 
@@ -311,20 +331,46 @@
             color: #0a1128;
             font-weight: 700;
         }
-
         #output .step {
             color: #1976d2;
             font-weight: 700;
         }
-
         #output .warning {
             color: #c62828;
             font-weight: 700;
         }
-
         #output .success {
             color: #2e7d32;
             font-weight: 700;
+        }
+
+        .summary-box {
+            background: #e8f0fe;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #1976d2;
+        }
+        .success-box {
+            background: #e8f5e9;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #2e7d32;
+        }
+        .warning-box {
+            background: #fff3e0;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #f57c00;
+        }
+        .danger-box {
+            background: #ffebee;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #c62828;
         }
 
         /* ============================================================
@@ -332,7 +378,7 @@
            ============================================================ */
         .footer {
             background: #0a1128;
-            padding: 18px 36px;
+            padding: 16px 36px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -342,7 +388,7 @@
         }
         .footer p {
             color: #7a8aa0;
-            font-size: 14px;
+            font-size: 13px;
         }
         .footer a {
             color: #00d4ff;
@@ -360,26 +406,75 @@
         }
 
         /* ============================================================
+           PRINT STYLES
+           ============================================================ */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .header,
+            .hero,
+            .footer,
+            .btn-group,
+            .input-card .btn-group,
+            .input-card .subtitle {
+                display: none !important;
+            }
+            .main-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 0;
+            }
+            .input-card {
+                display: none !important;
+            }
+            .results-card {
+                border: none;
+                padding: 0;
+                max-height: none;
+                overflow-y: visible;
+            }
+            #output {
+                border: none;
+                padding: 0;
+                background: white;
+            }
+            .summary-box,
+            .success-box,
+            .warning-box,
+            .danger-box {
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* ============================================================
            RESPONSIVE
            ============================================================ */
         @media (max-width: 600px) {
             .header {
-                padding: 16px 20px;
+                padding: 14px 18px;
             }
             .hero {
-                padding: 18px 20px;
+                padding: 14px 18px;
             }
             .hero h1 {
-                font-size: 20px;
+                font-size: 18px;
             }
             .main-grid {
-                padding: 16px;
+                padding: 12px;
             }
             .input-card,
             .results-card {
-                padding: 20px;
+                padding: 16px;
             }
-            .form-row {
+            .form-row,
+            .form-row-3 {
                 grid-template-columns: 1fr;
             }
             .btn-group {
@@ -389,7 +484,7 @@
                 min-width: 100%;
             }
             .footer {
-                padding: 14px 20px;
+                padding: 12px 18px;
                 flex-direction: column;
                 text-align: center;
             }
@@ -401,12 +496,12 @@
     <div class="container">
 
         <!-- ============================================================
-        HEADER / NAV
+        HEADER
         ============================================================ -->
         <header class="header">
             <div class="logo">
                 🧬 ACRS <span>v3.0</span>
-                <small>Anti-Cancer Resonance Software</small>
+                <small>Hospital-Ready Clinical Index</small>
             </div>
             <div class="nav-links">
                 <a href="#index">Index</a>
@@ -429,80 +524,160 @@
         </section>
 
         <!-- ============================================================
-        MAIN GRID: INPUT | RESULTS
+        MAIN GRID
         ============================================================ -->
         <div class="main-grid">
 
-            <!-- ========== LEFT: INPUT WINDOW ========== -->
+            <!-- ========== LEFT: INPUT ========== -->
             <section class="input-card" id="input">
                 <h2>📝 Patient Diagnostic Input</h2>
-                <p class="subtitle">Enter patient data then click <strong>Generate Instructions</strong></p>
+                <p class="subtitle">Enter all clinical data then click <strong>Generate Instructions</strong></p>
 
-                <div class="form-group">
-                    <label>Patient Name <span class="req">*</span></label>
-                    <input type="text" id="patientName" placeholder="e.g., John Doe" value="John Doe" />
+                <!-- Patient Demographics -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Patient Name <span class="req">*</span></label>
+                        <input type="text" id="patientName" placeholder="John Doe" value="John Doe" />
+                    </div>
+                    <div class="form-group">
+                        <label>Age <span class="req">*</span></label>
+                        <input type="number" id="patientAge" placeholder="58" value="58" />
+                    </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Age <span class="req">*</span></label>
-                        <input type="number" id="patientAge" placeholder="e.g., 58" value="58" />
+                        <label>Patient ID <span class="req">*</span></label>
+                        <input type="text" id="patientId" placeholder="P-001" value="P-001" />
                     </div>
                     <div class="form-group">
-                        <label>Patient ID <span class="req">*</span></label>
-                        <input type="text" id="patientId" placeholder="e.g., P-001" value="P-001" />
+                        <label>Date of Diagnosis</label>
+                        <input type="date" id="diagnosisDate" />
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Tumor Type <span class="req">*</span></label>
-                    <select id="tumorType">
-                        <option value="Liver">Liver</option>
-                        <option value="Pancreas">Pancreas</option>
-                        <option value="Breast">Breast</option>
-                        <option value="Brain (GBM)">Brain (GBM)</option>
-                        <option value="Lung">Lung</option>
-                        <option value="Skin/Melanoma">Skin / Melanoma</option>
-                        <option value="Colorectal">Colorectal</option>
-                    </select>
+                <!-- Physician Info -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Attending Physician <span class="req">*</span></label>
+                        <input type="text" id="doctorName" placeholder="Dr. Smith" value="Dr. Sarah Chen" />
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <input type="text" id="department" placeholder="Oncology" value="Oncology" />
+                    </div>
+                </div>
+
+                <!-- Tumor Details -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tumor Type <span class="req">*</span></label>
+                        <select id="tumorType">
+                            <option value="Liver">Liver</option>
+                            <option value="Pancreas">Pancreas</option>
+                            <option value="Breast">Breast</option>
+                            <option value="Brain (GBM)">Brain (GBM)</option>
+                            <option value="Lung">Lung</option>
+                            <option value="Skin/Melanoma">Skin / Melanoma</option>
+                            <option value="Colorectal">Colorectal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>ECOG Performance Status</label>
+                        <select id="ecog">
+                            <option value="0">0 — Fully active</option>
+                            <option value="1">1 — Restricted but ambulatory</option>
+                            <option value="2">2 — Ambulatory, capable of self-care</option>
+                            <option value="3">3 — Capable of limited self-care</option>
+                            <option value="4">4 — Completely disabled</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Tumor Depth (cm) <span class="req">*</span></label>
-                        <input type="number" step="0.1" id="tumorDepth" placeholder="e.g., 3.5" value="3.5" />
+                        <input type="number" step="0.1" id="tumorDepth" placeholder="3.5" value="3.5" />
                     </div>
                     <div class="form-group">
                         <label>Tumor Size (mm) <span class="req">*</span></label>
-                        <input type="number" step="0.5" id="tumorSize" placeholder="e.g., 25" value="25" />
+                        <input type="number" step="0.5" id="tumorSize" placeholder="25" value="25" />
                     </div>
                 </div>
 
+                <!-- Vitals -->
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label>Systolic BP (mmHg)</label>
+                        <input type="number" id="bpSystolic" placeholder="120" value="120" />
+                    </div>
+                    <div class="form-group">
+                        <label>Diastolic BP (mmHg)</label>
+                        <input type="number" id="bpDiastolic" placeholder="80" value="80" />
+                    </div>
+                    <div class="form-group">
+                        <label>Heart Rate (bpm)</label>
+                        <input type="number" id="heartRate" placeholder="72" value="72" />
+                    </div>
+                </div>
+
+                <!-- Contraindications & History -->
+                <div class="form-group">
+                    <label>Contraindications / Allergies</label>
+                    <textarea id="contraindications" placeholder="e.g., Pacemaker, pregnancy, metal implants, known allergies...">None</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Previous Treatments / Medical History</label>
+                    <textarea id="medicalHistory" placeholder="e.g., Prior chemo, radiation, surgeries...">None</textarea>
+                </div>
+
+                <!-- Treatment Settings -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Treatment Duration (minutes)</label>
+                        <input type="number" id="treatmentDuration" placeholder="30" value="30" />
+                    </div>
+                    <div class="form-group">
+                        <label>Power Level (%)</label>
+                        <select id="powerLevel">
+                            <option value="25">25% — Low</option>
+                            <option value="50" selected>50% — Medium</option>
+                            <option value="75">75% — High</option>
+                            <option value="100">100% — Maximum</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
                 <div class="btn-group">
                     <button class="btn btn-primary" onclick="generateInstructions()">🧮 Generate Instructions</button>
                     <button class="btn btn-success" onclick="runAutoTreatment()">▶ Run Auto-Treatment</button>
                     <button class="btn btn-danger" onclick="emergencyStop()">🛑 Emergency Stop</button>
-                    <button class="btn btn-warning" onclick="clearForm()">🗑️ Clear</button>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-warning" onclick="clearForm()">🗑️ Clear Form</button>
+                    <button class="btn btn-print" onclick="printReport()">🖨️ Print / PDF Report</button>
                 </div>
 
-                <p style="margin-top: 16px; font-size: 13px; color: #4a6a8a;">
-                    <strong>Step 1:</strong> Enter data → <strong>Step 2:</strong> Generate Instructions → 
-                    <strong>Step 3:</strong> Run Auto-Treatment → <strong>Step 4:</strong> Review Results
+                <p style="margin-top: 14px; font-size: 13px; color: #4a6a8a;">
+                    <strong>Workflow:</strong> Enter data → Generate Instructions → Run Auto-Treatment → Print Report
                 </p>
             </section>
 
-            <!-- ========== RIGHT: RESULTS / INSTRUCTIONS ========== -->
+            <!-- ========== RIGHT: RESULTS ========== -->
             <section class="results-card" id="results">
-                <h2>📄 Diagnosis & Instructions</h2>
-                <p class="subtitle">Generated clinical plan appears below</p>
+                <h2>📄 Diagnosis & Clinical Instructions</h2>
+                <p class="subtitle">Complete treatment plan with next steps</p>
 
                 <div id="output">
                     <div class="placeholder">
-                        ⚕️ Enter patient diagnostic data on the left<br />
+                        ⚕️ Enter all patient diagnostic data on the left<br />
                         then click <strong>"Generate Instructions"</strong>.<br /><br />
                         <span style="font-size: 14px; color: #6a8aa0;">
-                            The system will auto-calculate optimal frequencies<br />
-                            and provide step-by-step clinical instructions.
+                            The system will auto-calculate optimal frequencies,<br />
+                            generate a full clinical plan, and provide<br />
+                            step-by-step instructions for the medical team.
                         </span>
                     </div>
                 </div>
@@ -524,25 +699,16 @@
     </div>
 
     <!-- ============================================================
-    JAVASCRIPT — ALL THE LOGIC
+    JAVASCRIPT — COMPLETE CLINICAL ENGINE
     ============================================================ -->
     <script>
-        /**
-         * ============================================================
-         *  CLINICAL LOGIC ENGINE
-         *  ============================================================
-         *  This is the "brain" that:
-         *  1. Reads patient diagnostic data
-         *  2. Auto-calculates optimal frequency range
-         *  3. Generates step-by-step clinical instructions
-         *  4. Simulates a treatment run (for demonstration)
-         * ============================================================
-         */
-
         // --- DOM References ---
         const output = document.getElementById('output');
         const statusDot = document.getElementById('statusDot');
         const statusText = document.getElementById('statusText');
+
+        // --- Set default diagnosis date ---
+        document.getElementById('diagnosisDate').value = new Date().toISOString().split('T')[0];
 
         // --- Helper: Update Status ---
         function setStatus(online, message) {
@@ -554,144 +720,173 @@
                 statusText.textContent = message || 'Offline';
             }
         }
-
-        // Default: System is ready
         setStatus(true, 'System Ready');
 
-        // --- Helper: Get Form Values ---
+        // --- Helper: Get All Form Data ---
         function getPatientData() {
             return {
                 name: document.getElementById('patientName').value.trim() || 'Unknown',
                 age: document.getElementById('patientAge').value || 'N/A',
                 id: document.getElementById('patientId').value.trim() || 'N/A',
+                diagnosisDate: document.getElementById('diagnosisDate').value || 'N/A',
+                doctor: document.getElementById('doctorName').value.trim() || 'Not specified',
+                department: document.getElementById('department').value.trim() || 'Not specified',
                 tumor: document.getElementById('tumorType').value,
+                ecog: document.getElementById('ecog').value,
                 depth: parseFloat(document.getElementById('tumorDepth').value) || 3.0,
-                size: parseFloat(document.getElementById('tumorSize').value) || 20
+                size: parseFloat(document.getElementById('tumorSize').value) || 20,
+                bpSystolic: document.getElementById('bpSystolic').value || '--',
+                bpDiastolic: document.getElementById('bpDiastolic').value || '--',
+                heartRate: document.getElementById('heartRate').value || '--',
+                contraindications: document.getElementById('contraindications').value.trim() || 'None reported',
+                medicalHistory: document.getElementById('medicalHistory').value.trim() || 'None reported',
+                duration: document.getElementById('treatmentDuration').value || '30',
+                power: document.getElementById('powerLevel').value
             };
         }
 
-        // --- Helper: Auto-Calculate Frequency Range ---
+        // --- Helper: Auto-Calculate Frequency ---
         function calculateFrequencies(tumor, depth) {
             let start_khz, end_khz;
-
-            // Base frequencies by tumor type
-            if (tumor.includes('Brain')) {
-                start_khz = 150;
-                end_khz = 500;
-            } else if (tumor === 'Liver' || tumor === 'Pancreas') {
-                start_khz = 80;
-                end_khz = 300;
-            } else if (tumor === 'Breast' || tumor === 'Skin/Melanoma') {
-                start_khz = 500;
-                end_khz = 1500;
-            } else { // Lung, Colorectal
-                start_khz = 100;
-                end_khz = 400;
-            }
-
-            // Adjust for depth (clinical rule)
-            if (depth > 5.0) {
-                start_khz = Math.max(50, start_khz - 50);
-                end_khz = Math.max(200, end_khz - 100);
-            } else if (depth < 2.0) {
-                start_khz = Math.min(800, start_khz + 200);
-                end_khz = Math.min(3000, end_khz + 500);
-            }
-
+            if (tumor.includes('Brain')) { start_khz = 150;
+                end_khz = 500; } else if (tumor === 'Liver' || tumor === 'Pancreas') { start_khz = 80;
+                end_khz = 300; } else if (tumor === 'Breast' || tumor === 'Skin/Melanoma') { start_khz = 500;
+                end_khz = 1500; } else { start_khz = 100;
+                end_khz = 400; }
+            if (depth > 5.0) { start_khz = Math.max(50, start_khz - 50);
+                end_khz = Math.max(200, end_khz - 100); } else if (depth < 2.0) { start_khz = Math.min(800, start_khz +
+                    200);
+                end_khz = Math.min(3000, end_khz + 500); }
             const step_khz = Math.max(5, Math.round((end_khz - start_khz) / 30));
             return { start_khz, end_khz, step_khz };
         }
 
-        // --- MAIN: Generate Instructions ---
+        // --- Helper: Get ECOG Label ---
+        function getEcogLabel(val) {
+            const map = {
+                '0': 'Fully active',
+                '1': 'Restricted but ambulatory',
+                '2': 'Ambulatory, self-care',
+                '3': 'Limited self-care',
+                '4': 'Completely disabled'
+            };
+            return map[val] || val;
+        }
+
+        // ============================================================
+        //  MAIN: GENERATE INSTRUCTIONS
+        // ============================================================
         function generateInstructions() {
             const data = getPatientData();
 
-            // Validate
             if (!data.name || data.name === 'Unknown') {
-                output.innerHTML = `<div style="color: #c62828; font-weight: 700;">⚠️ Please enter a valid Patient Name.</div>`;
+                output.innerHTML =
+                    `<div class="danger-box"><strong>⚠️ Error:</strong> Please enter a valid Patient Name.</div>`;
                 return;
             }
             if (isNaN(data.depth) || data.depth <= 0) {
-                output.innerHTML = `<div style="color: #c62828; font-weight: 700;">⚠️ Please enter a valid Tumor Depth (cm).</div>`;
+                output.innerHTML =
+                    `<div class="danger-box"><strong>⚠️ Error:</strong> Please enter a valid Tumor Depth (cm).</div>`;
                 return;
             }
 
-            // Calculate frequencies
             const freq = calculateFrequencies(data.tumor, data.depth);
             const totalSteps = Math.round((freq.end_khz - freq.start_khz) / freq.step_khz);
-            const estDuration = totalSteps * 2; // seconds
+            const estDuration = totalSteps * 2;
 
-            // Build the clinical output
             let html = '';
 
-            // --- Patient Summary ---
-            html += `<div style="background: #e8f0fe; padding: 14px 18px; border-radius: 12px; margin-bottom: 16px;">`;
-            html += `<strong>🧑‍⚕️ Patient:</strong> ${data.name} (Age: ${data.age}) &nbsp;|&nbsp; <strong>ID:</strong> ${data.id}<br>`;
-            html += `<strong>🧬 Tumor:</strong> ${data.tumor} &nbsp;|&nbsp; <strong>Depth:</strong> ${data.depth} cm &nbsp;|&nbsp; <strong>Size:</strong> ${data.size} mm`;
+            // --- 1. Patient Summary ---
+            html += `<div class="summary-box">`;
+            html += `<strong>🧑‍⚕️ PATIENT SUMMARY</strong><br>`;
+            html += `<strong>Name:</strong> ${data.name} (Age: ${data.age}) &nbsp;|&nbsp; <strong>ID:</strong> ${data.id}<br>`;
+            html += `<strong>Diagnosis Date:</strong> ${data.diagnosisDate} &nbsp;|&nbsp; <strong>Physician:</strong> ${data.doctor} (${data.department})<br>`;
+            html += `<strong>🧬 Tumor:</strong> ${data.tumor} &nbsp;|&nbsp; <strong>Depth:</strong> ${data.depth} cm &nbsp;|&nbsp; <strong>Size:</strong> ${data.size} mm<br>`;
+            html += `<strong>ECOG Status:</strong> ${getEcogLabel(data.ecog)} &nbsp;|&nbsp; <strong>Vitals:</strong> BP ${data.bpSystolic}/${data.bpDiastolic} mmHg | HR ${data.heartRate} bpm`;
             html += `</div>`;
 
-            // --- Calculated Parameters ---
-            html += `<div style="background: #f0f7ff; padding: 14px 18px; border-radius: 12px; margin-bottom: 16px; border-left: 4px solid #1976d2;">`;
-            html += `<strong style="font-size: 16px;">📊 Calculated Treatment Parameters</strong><br>`;
+            // --- 2. Contraindications Check ---
+            const contra = data.contraindications.toLowerCase();
+            if (contra.includes('pacemaker') || contra.includes('pregnancy') || contra.includes('metal') || contra.includes(
+                    'implant')) {
+                html += `<div class="danger-box">`;
+                html += `<strong>⚠️ CONTRAINDICATION ALERT:</strong><br>`;
+                html += `The patient has reported: <em>"${data.contraindications}"</em><br>`;
+                html += `<span style="color: #c62828; font-weight: 700;">→ Treatment may be contraindicated. Consult with the attending physician before proceeding.</span>`;
+                html += `</div>`;
+            } else {
+                html += `<div class="success-box">`;
+                html += `<strong>✅ No contraindications reported.</strong> Proceed with treatment plan.`;
+                html += `</div>`;
+            }
+
+            // --- 3. Calculated Parameters ---
+            html += `<div class="summary-box" style="border-left-color: #f57c00;">`;
+            html += `<strong>📊 CALCULATED TREATMENT PARAMETERS</strong><br>`;
             html += `<span class="highlight">Start:</span> ${freq.start_khz.toFixed(1)} kHz &nbsp;|&nbsp; `;
             html += `<span class="highlight">End:</span> ${freq.end_khz.toFixed(1)} kHz &nbsp;|&nbsp; `;
             html += `<span class="highlight">Step:</span> ${freq.step_khz.toFixed(1)} kHz<br>`;
             html += `<span class="highlight">Total Steps:</span> ${totalSteps} &nbsp;|&nbsp; `;
-            html += `<span class="highlight">Est. Duration:</span> ~${estDuration} seconds`;
+            html += `<span class="highlight">Est. Sweep Duration:</span> ~${estDuration} seconds<br>`;
+            html += `<span class="highlight">Treatment Duration:</span> ${data.duration} minutes &nbsp;|&nbsp; `;
+            html += `<span class="highlight">Power Level:</span> ${data.power}%`;
             html += `</div>`;
 
-            // --- Step-by-Step Instructions ---
-            html += `<div style="background: #fafffe; padding: 14px 18px; border-radius: 12px; border: 1px solid #dce4ec;">`;
-            html += `<strong style="font-size: 16px;">📋 Step-by-Step Clinical Instructions</strong><br><br>`;
+            // --- 4. Medical History Summary ---
+            html += `<div class="summary-box" style="border-left-color: #455a64;">`;
+            html += `<strong>📋 MEDICAL HISTORY</strong><br>`;
+            html += `<strong>Allergies/Contraindications:</strong> ${data.contraindications}<br>`;
+            html += `<strong>Previous Treatments:</strong> ${data.medicalHistory}`;
+            html += `</div>`;
+
+            // --- 5. Step-by-Step Instructions ---
+            html += `<div style="background: #f0f7ff; padding: 14px 18px; border-radius: 12px; margin-bottom: 12px; border: 1px solid #dce4ec;">`;
+            html += `<strong style="font-size: 16px;">📋 STEP-BY-STEP CLINICAL INSTRUCTIONS</strong><br><br>`;
 
             html += `<span class="step">STEP 1:</span> Verify hardware connection.<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ Ensure the ESP32 is connected via USB and powered on.</span><br><br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ Ensure the ESP32 is connected via USB and powered on. Check the status indicator.</span><br><br>`;
 
             html += `<span class="step">STEP 2:</span> Click <strong>"Run Auto-Treatment"</strong> below.<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ The system will automatically sweep from ${freq.start_khz.toFixed(1)} to ${freq.end_khz.toFixed(1)} kHz.</span><br><br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ The system will automatically sweep from ${freq.start_khz.toFixed(1)} to ${freq.end_khz.toFixed(1)} kHz.</span><br><br>`;
 
             html += `<span class="step">STEP 3:</span> Monitor resonance detection.<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ The system will lock onto the peak amplitude frequency.</span><br><br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ The system will lock onto the peak amplitude frequency. Watch the Dashboard tab.</span><br><br>`;
 
             html += `<span class="step">STEP 4:</span> Enable Auto-Track (PLL).<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ PLL will maintain resonance in real-time during treatment.</span><br><br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ PLL will maintain resonance in real-time during the ${data.duration}-minute treatment session.</span><br><br>`;
 
-            html += `<span class="step">STEP 5:</span> Monitor live data.<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ Check Frequency, Phase, and Amplitude on the Dashboard tab.</span><br><br>`;
+            html += `<span class="step">STEP 5:</span> Monitor patient vitals throughout the session.<br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ Record BP, HR, and any adverse reactions at 5-minute intervals.</span><br><br>`;
 
-            html += `<span class="step">STEP 6:</span> Generate Patient Report.<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ Click "Generate Report" after treatment to save clinical documentation.</span><br><br>`;
+            html += `<span class="step">STEP 6:</span> After treatment completion, click <strong>"Print / PDF Report"</strong>.<br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ Save the report to the patient's medical file.</span><br><br>`;
 
-            html += `<span class="warning">⚠️ EMERGENCY:</span> Press the <strong>"Emergency Stop"</strong> button immediately if any abnormality is observed.<br>`;
-            html += `<span style="color: #4a6a8a; font-size: 14px; margin-left: 20px;">→ This will cut all output power to the patient applicator.</span>`;
+            html += `<span class="warning">⚠️ EMERGENCY:</span> Press the <strong>"Emergency Stop"</strong> button immediately if:<br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ Patient reports pain, dizziness, or any discomfort.</span><br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ Any equipment malfunction is observed.</span><br>`;
+            html += `<span style="color: #4a6a8a; font-size: 13px; margin-left: 20px;">→ This will cut all output power to the patient applicator immediately.</span>`;
             html += `</div>`;
 
-            // --- What to do next ---
-            html += `<div style="background: #e8f5e9; padding: 14px 18px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #2e7d32;">`;
-            html += `<strong style="font-size: 16px; color: #1b5e20;">✅ What to do next:</strong><br>`;
-            html += `1. Confirm the patient is positioned correctly.<br>`;
-            html += `2. Click <strong>"Run Auto-Treatment"</strong> to start the therapy sequence.<br>`;
-            html += `3. Monitor the system throughout the session.<br>`;
-            html += `4. After completion, click <strong>"Generate Report"</strong> for the patient record.`;
+            // --- 6. What to do next ---
+            html += `<div class="success-box">`;
+            html += `<strong style="font-size: 16px;">✅ WHAT TO DO NEXT:</strong><br>`;
+            html += `<strong>1.</strong> Confirm the patient is positioned correctly and comfortable.<br>`;
+            html += `<strong>2.</strong> Click <strong>"Run Auto-Treatment"</strong> to start the therapy sequence.<br>`;
+            html += `<strong>3.</strong> Monitor the system and patient throughout the session.<br>`;
+            html += `<strong>4.</strong> After completion, click <strong>"Print / PDF Report"</strong> for the patient record.`;
             html += `</div>`;
 
-            // Inject into output
             output.innerHTML = html;
-
-            // Update status
             setStatus(true, `Plan generated for ${data.name}`);
-
-            // Store plan for auto-treatment
-            window._plan = {
-                patient: data,
-                freq: freq
-            };
+            window._plan = { patient: data, freq: freq };
         }
 
-        // --- Auto-Treatment Simulation ---
+        // ============================================================
+        //  AUTO-TREATMENT
+        // ============================================================
         function runAutoTreatment() {
             if (!window._plan) {
-                output.innerHTML = `<div style="color: #c62828; font-weight: 700;">⚠️ Please click "Generate Instructions" first.</div>`;
+                output.innerHTML = `<div class="danger-box"><strong>⚠️</strong> Please click "Generate Instructions" first.</div>`;
                 return;
             }
 
@@ -700,7 +895,12 @@
 
             setStatus(true, `🔍 Sweeping... ${freq.start_khz.toFixed(0)}-${freq.end_khz.toFixed(0)} kHz`);
 
-            // Simulate sweep with progress updates
+            // Append progress to output
+            output.innerHTML += `<div style="background: #e3f2fd; padding: 12px 16px; border-radius: 10px; margin-top: 12px; border-left: 4px solid #1976d2;">`;
+            output.innerHTML += `<strong>⏳ TREATMENT IN PROGRESS...</strong><br>`;
+            output.innerHTML += `<span id="sweepStatus">Sweeping: ${freq.start_khz.toFixed(0)} kHz (0%)</span>`;
+            output.innerHTML += `</div>`;
+
             let progress = 0;
             const totalSteps = Math.round((freq.end_khz - freq.start_khz) / freq.step_khz);
             let currentFreq = freq.start_khz;
@@ -709,82 +909,219 @@
                 progress += 1;
                 currentFreq += freq.step_khz;
 
+                const pct = Math.round((progress / totalSteps) * 100);
+                const statusEl = document.getElementById('sweepStatus');
+                if (statusEl) {
+                    statusEl.textContent = `Sweeping: ${currentFreq.toFixed(0)} kHz (${pct}%)`;
+                }
+                setStatus(true, `🔍 Sweeping... ${currentFreq.toFixed(0)} kHz (${pct}%)`);
+
                 if (progress >= totalSteps) {
                     clearInterval(interval);
-                    // Simulate finding resonance
-                    const resonance = (freq.start_khz + freq.end_khz) / 2 + Math.random() * 30 - 15;
+                    const resonance = (freq.start_khz + freq.end_khz) / 2 + (Math.random() * 40 - 20);
                     setStatus(true, `✅ Resonance locked at ${resonance.toFixed(1)} kHz`);
 
+                    // Remove progress indicator and show completion
+                    const progressDiv = document.querySelector('#output > div:last-child');
+                    if (progressDiv) progressDiv.remove();
+
                     output.innerHTML += `
-                        <div style="background: #e8f5e9; padding: 14px 18px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #2e7d32;">
-                            <strong style="color: #1b5e20;">✅ TREATMENT COMPLETE</strong><br>
-                            Resonance locked at <strong>${resonance.toFixed(1)} kHz</strong><br>
-                            Auto-Track (PLL) is now <strong>ENABLED</strong>.<br>
-                            <span style="font-size: 14px; color: #4a6a8a;">Monitor the Dashboard for live data.</span>
+                        <div class="success-box" style="margin-top: 12px;">
+                            <strong style="font-size: 18px; color: #1b5e20;">✅ TREATMENT COMPLETE</strong><br><br>
+                            <span style="font-size: 20px; font-weight: 700; color: #0a1128;">Resonance locked at <span style="color: #1976d2;">${resonance.toFixed(1)} kHz</span></span><br>
+                            <span style="font-size: 16px; font-weight: 700; color: #2e7d32;">Auto-Track (PLL) is now <span style="color: #1b5e20;">ENABLED</span>.</span><br><br>
+                            <span style="color: #4a6a8a;">📊 Monitor the Dashboard for live data during the ${data.duration}-minute session.</span><br>
+                            <span style="color: #4a6a8a;">📄 After completion, click "Print / PDF Report" to save the clinical record.</span>
                         </div>
                     `;
-                    return;
-                }
 
-                // Update status with progress
-                if (progress % 5 === 0) {
-                    setStatus(true, `🔍 Sweeping... ${currentFreq.toFixed(0)} kHz (${Math.round(progress/totalSteps*100)}%)`);
+                    // Scroll to bottom
+                    const resultsCard = document.querySelector('.results-card');
+                    resultsCard.scrollTop = resultsCard.scrollHeight;
+
+                    // Store resonance for report
+                    window._resonance = resonance.toFixed(1);
                 }
-            }, 300);
+            }, 250);
         }
 
-        // --- Emergency Stop ---
+        // ============================================================
+        //  EMERGENCY STOP
+        // ============================================================
         function emergencyStop() {
             setStatus(false, '🛑 EMERGENCY STOP ACTIVATED');
             output.innerHTML = `
-                <div style="background: #ffebee; padding: 20px; border-radius: 12px; border-left: 4px solid #c62828;">
-                    <strong style="color: #c62828; font-size: 20px;">🛑 EMERGENCY STOP</strong><br><br>
+                <div class="danger-box">
+                    <strong style="font-size: 22px; color: #c62828;">🛑 EMERGENCY STOP</strong><br><br>
                     <span style="font-size: 16px;">Output has been <strong>DISABLED</strong>.</span><br>
-                    <span style="color: #4a6a8a;">To resume, set a new frequency manually or restart the treatment.</span><br><br>
-                    <span style="font-size: 14px; color: #4a6a8a;">Action required: Investigate the cause before continuing.</span>
+                    <span style="color: #4a6a8a;">To resume, click "Generate Instructions" and then "Run Auto-Treatment" again.</span><br><br>
+                    <span style="font-weight: 700; color: #c62828;">Action required:</span> Investigate the cause before continuing.
                 </div>
             `;
-            // Reset plan
             window._plan = null;
+            window._resonance = null;
         }
 
-        // --- Clear Form ---
+        // ============================================================
+        //  PRINT / PDF REPORT
+        // ============================================================
+        function printReport() {
+            if (!window._plan) {
+                output.innerHTML =
+                    `<div class="danger-box"><strong>⚠️</strong> No treatment data available. Please run a treatment first.</div>`;
+                return;
+            }
+
+            const data = window._plan.patient;
+            const freq = window._plan.freq;
+            const resonance = window._resonance || 'Not locked';
+
+            // Build a printable summary
+            const printContent = `
+                <div style="font-family: 'Inter', sans-serif; padding: 30px; max-width: 1000px; margin: 0 auto; background: white;">
+                    <div style="text-align: center; border-bottom: 3px solid #0a1128; padding-bottom: 20px; margin-bottom: 24px;">
+                        <h1 style="font-size: 28px; color: #0a1128;">🧬 ACRS v3.0 — Clinical Treatment Report</h1>
+                        <p style="color: #4a6a8a;">Anti-Cancer Resonance Software | MIT License</p>
+                        <p style="color: #4a6a8a;">Generated: ${new Date().toLocaleString()}</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                        <div style="background: #f8faff; padding: 16px; border-radius: 8px; border: 1px solid #e4edf6;">
+                            <h3 style="color: #0a1128; margin-bottom: 8px;">👤 Patient Information</h3>
+                            <p><strong>Name:</strong> ${data.name}</p>
+                            <p><strong>Age:</strong> ${data.age}</p>
+                            <p><strong>ID:</strong> ${data.id}</p>
+                            <p><strong>Diagnosis Date:</strong> ${data.diagnosisDate}</p>
+                            <p><strong>Physician:</strong> ${data.doctor} (${data.department})</p>
+                        </div>
+                        <div style="background: #f8faff; padding: 16px; border-radius: 8px; border: 1px solid #e4edf6;">
+                            <h3 style="color: #0a1128; margin-bottom: 8px;">🧬 Tumor Information</h3>
+                            <p><strong>Type:</strong> ${data.tumor}</p>
+                            <p><strong>Depth:</strong> ${data.depth} cm</p>
+                            <p><strong>Size:</strong> ${data.size} mm</p>
+                            <p><strong>ECOG Status:</strong> ${getEcogLabel(data.ecog)}</p>
+                            <p><strong>Vitals:</strong> BP ${data.bpSystolic}/${data.bpDiastolic} mmHg | HR ${data.heartRate} bpm</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8faff; padding: 16px; border-radius: 8px; border: 1px solid #e4edf6; margin-bottom: 24px;">
+                        <h3 style="color: #0a1128; margin-bottom: 8px;">📊 Treatment Parameters & Results</h3>
+                        <p><strong>Sweep Range:</strong> ${freq.start_khz.toFixed(1)} — ${freq.end_khz.toFixed(1)} kHz</p>
+                        <p><strong>Step Size:</strong> ${freq.step_khz.toFixed(1)} kHz</p>
+                        <p><strong>Resonant Frequency:</strong> ${resonance} kHz</p>
+                        <p><strong>Treatment Duration:</strong> ${data.duration} minutes</p>
+                        <p><strong>Power Level:</strong> ${data.power}%</p>
+                        <p><strong>Auto-Track (PLL):</strong> ${window._resonance ? '✅ ENABLED' : '❌ DISABLED'}</p>
+                    </div>
+
+                    <div style="background: #f8faff; padding: 16px; border-radius: 8px; border: 1px solid #e4edf6; margin-bottom: 24px;">
+                        <h3 style="color: #0a1128; margin-bottom: 8px;">📋 Medical History</h3>
+                        <p><strong>Contraindications/Allergies:</strong> ${data.contraindications}</p>
+                        <p><strong>Previous Treatments:</strong> ${data.medicalHistory}</p>
+                    </div>
+
+                    <div style="background: #f8faff; padding: 16px; border-radius: 8px; border: 1px solid #e4edf6;">
+                        <h3 style="color: #0a1128; margin-bottom: 8px;">📝 Clinical Notes</h3>
+                        <p style="min-height: 80px; border: 1px dashed #dce4ec; padding: 12px; background: white; border-radius: 4px;">
+                            __________________________________________________<br>
+                            __________________________________________________<br>
+                            __________________________________________________
+                        </p>
+                        <p style="margin-top: 12px; color: #4a6a8a; font-size: 13px;">
+                            <strong>Attending Physician Signature:</strong> _______________________________ &nbsp; <strong>Date:</strong> _______________
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #e4edf6; color: #8aa0c0; font-size: 12px;">
+                        <p>ACRS v3.0 — Developed by Selim Ahmed (amit.khanna.1082@gmail.com)</p>
+                        <p>⚠️ R&D Tool — Not for clinical use without regulatory approval</p>
+                        <p>MIT License — Free for all</p>
+                    </div>
+                </div>
+            `;
+
+            // Open print window
+            const printWindow = window.open('', '_blank', 'width=1200,height=900');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>ACRS Clinical Report — ${data.name}</title>
+                        <style>
+                            * { margin: 0; padding: 0; box-sizing: border-box; }
+                            body { font-family: 'Inter', -apple-system, sans-serif; background: white; }
+                            @media print {
+                                body { padding: 0; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        ${printContent}
+                        <script>
+                            window.onload = function() {
+                                window.print();
+                                window.close();
+                            };
+                        <\/script>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+
+            setStatus(true, `📄 Report generated for ${data.name}`);
+        }
+
+        // ============================================================
+        //  CLEAR FORM
+        // ============================================================
         function clearForm() {
             document.getElementById('patientName').value = '';
             document.getElementById('patientAge').value = '';
             document.getElementById('patientId').value = '';
+            document.getElementById('doctorName').value = '';
+            document.getElementById('department').value = '';
             document.getElementById('tumorDepth').value = '';
             document.getElementById('tumorSize').value = '';
+            document.getElementById('bpSystolic').value = '';
+            document.getElementById('bpDiastolic').value = '';
+            document.getElementById('heartRate').value = '';
+            document.getElementById('contraindications').value = '';
+            document.getElementById('medicalHistory').value = '';
+            document.getElementById('treatmentDuration').value = '30';
             document.getElementById('tumorType').selectedIndex = 0;
+            document.getElementById('ecog').selectedIndex = 0;
+            document.getElementById('powerLevel').selectedIndex = 1;
+            document.getElementById('diagnosisDate').value = new Date().toISOString().split('T')[0];
 
             output.innerHTML = `
                 <div class="placeholder">
-                    ⚕️ Enter patient diagnostic data on the left<br />
+                    ⚕️ Enter all patient diagnostic data on the left<br />
                     then click <strong>"Generate Instructions"</strong>.<br /><br />
                     <span style="font-size: 14px; color: #6a8aa0;">
-                        The system will auto-calculate optimal frequencies<br />
-                        and provide step-by-step clinical instructions.
+                        The system will auto-calculate optimal frequencies,<br />
+                        generate a full clinical plan, and provide<br />
+                        step-by-step instructions for the medical team.
                     </span>
                 </div>
             `;
             setStatus(true, 'System Ready');
             window._plan = null;
+            window._resonance = null;
         }
 
         // --- Enter key triggers Generate ---
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 const active = document.activeElement;
-                if (active && (active.tagName === 'INPUT' || active.tagName === 'SELECT')) {
+                if (active && (active.tagName === 'INPUT' || active.tagName === 'SELECT' || active.tagName ===
+                        'TEXTAREA')) {
                     generateInstructions();
                 }
             }
         });
 
-        // --- Auto-generate on load (so the page shows something useful) ---
+        // --- Auto-generate on load ---
         window.onload = function() {
-            // Pre-populate with default values and generate instructions
-            setTimeout(generateInstructions, 300);
+            setTimeout(generateInstructions, 400);
         };
     </script>
 
