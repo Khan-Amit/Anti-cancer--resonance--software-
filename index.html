@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACRS v3.0 — Anti-Cancer Resonance Software</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f4f8;
+            color: #1a2332;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .navbar {
+            background: #0a1128;
+            color: white;
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span {
+            color: #00d4ff;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #b0c4de;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+        .badge {
+            background: #00d4ff;
+            color: #0a1128;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, #0a1128 0%, #1a2a4a 100%);
+            color: white;
+            border-bottom: 4px solid #00d4ff;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .hero h1 span {
+            color: #00d4ff;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #b0c4de;
+            max-width: 700px;
+            margin: 16px 0 24px;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            color: #8aa0c0;
+            font-size: 14px;
+        }
+        .hero .meta strong {
+            color: white;
+        }
+
+        /* ===== INDEX GRID (The "Proper Index") ===== */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0 60px;
+        }
+        .index-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            border-left: 6px solid #00d4ff;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: #1a2332;
+            display: block;
+        }
+        .index-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+        .index-card .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+        .index-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .index-card p {
+            color: #4a5a72;
+            font-size: 15px;
+        }
+        .index-card .tag {
+            display: inline-block;
+            margin-top: 12px;
+            background: #e8edf5;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0a1128;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e8f0;
+        }
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .section h2 span {
+            color: #0055cc;
+        }
+        .section p {
+            color: #2a3a52;
+            max-width: 800px;
+            font-size: 17px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .feature-item {
+            background: #f8faff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e0e8f0;
+        }
+        .feature-item h4 {
+            color: #0a1128;
+            margin-bottom: 6px;
+        }
+        .feature-item p {
+            font-size: 14px;
+            color: #4a5a72;
+        }
+
+        /* ===== COMPATIBLE DEVICES TABLE ===== */
+        .device-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            margin: 20px 0;
+        }
+        .device-table th {
+            background: #0a1128;
+            color: white;
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .device-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e8edf5;
+        }
+        .device-table tr:last-child td {
+            border-bottom: none;
+        }
+        .flag {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0a1128;
+            color: #7a8aa0;
+            padding: 32px 0;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 2px solid #00d4ff;
+        }
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        .footer .license {
+            background: #1a2a4a;
+            display: inline-block;
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { gap: 16px; }
+            .index-grid { grid-template-columns: 1fr; }
+            .device-table { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🧬 ACRS <span>v3.0</span></div>
+            <div class="nav-links">
+                <a href="#index">Index</a>
+                <a href="#features">Features</a>
+                <a href="#devices">Hardware</a>
+                <a href="#quickstart">Quick Start</a>
+                <a href="https://github.com/Khan-Ar/Anti-cancer--resonance--software" target="_blank">GitHub</a>
+                <span class="badge">MIT License</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <h1>Anti-Cancer Resonance <span>Software</span></h1>
+            <p>ACRS is an open-source medical device controller. It automates resonance frequency sweeps, locks onto tumor-specific frequencies, and generates clinical reports — all through a user-friendly Treatment Planner.</p>
+            <div class="meta">
+                <span><strong>Developer:</strong> Selim Ahmed</span>
+                <span><strong>Email:</strong> amit.khanna.1082@gmail.com</span>
+                <span><strong>License:</strong> MIT (Free for all)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAIN INDEX (The "Proper Index" Grid) ===== -->
+    <div class="container" id="index">
+        <div class="index-grid">
+            <a href="#planner" class="index-card">
+                <div class="icon">📋</div>
+                <h3>Treatment Planner</h3>
+                <p>Enter patient data, auto-calculate frequencies, and generate a full Standard Operating Procedure (SOP).</p>
+                <span class="tag">Front End Index</span>
+            </a>
+            <a href="#auto" class="index-card">
+                <div class="icon">🧮</div>
+                <h3>Auto-Calculation</h3>
+                <p>Based on Tumor Type (Liver, Brain, Breast) and depth, the software computes the optimal sweep range and step size.</p>
+                <span class="tag">Algorithm</span>
+            </a>
+            <a href="#oneclick" class="index-card">
+                <div class="icon">🚀</div>
+                <h3>One-Click Operation</h3>
+                <p>Run the full sequence: Connect → Sweep → Lock Resonance → Enable PLL. Fully automated.</p>
+                <span class="tag">Automation</span>
+            </a>
+            <a href="#report" class="index-card">
+                <div class="icon">📄</div>
+                <h3>Patient Report Generator</h3>
+                <p>Generates a detailed clinical report (.txt) with patient info, resonance results, and the generated SOP.</p>
+                <span class="tag">Documentation</span>
+            </a>
+            <a href="#dashboard" class="index-card">
+                <div class="icon">📊</div>
+                <h3>Live Dashboard</h3>
+                <p>Real-time data cards showing Frequency, Phase, Amplitude, and System Status with Emergency Stop.</p>
+                <span class="tag">Monitoring</span>
+            </a>
+            <a href="#graphs" class="index-card">
+                <div class="icon">📈</div>
+                <h3>Real-Time Graphs</h3>
+                <p>Visualize Amplitude vs Frequency and Phase vs Frequency to confirm resonance locking.</p>
+                <span class="tag">Visualization</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== FEATURES SECTION ===== -->
+    <div class="container section" id="features">
+        <h2>⚙️ <span>Core Features</span></h2>
+        <p>Designed for researchers and clinicians who need precision, automation, and clarity.</p>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h4>🔊 Frequency Sweep Engine</h4>
+                <p>Scans a user-defined or auto-calculated frequency range to find the resonant peak.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🔄 Auto-Track (PLL)</h4>
+                <p>Continuously adjusts the frequency to maintain resonance even as tissue properties change.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🧩 Hardware Abstraction</h4>
+                <p>Pure serial communication (RS-232/USB) with no simulation fallback — designed for real hardware.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🛑 Emergency Stop</h4>
+                <p>Instantly disables output at the press of a button for maximum safety.</p>
+            </div>
+            <div class="feature-item">
+                <h4>📁 Logging & Export</h4>
+                <p>All session data and patient reports are saved as CSV and TXT files in the /logs folder.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🌍 Open Source</h4>
+                <p>MIT licensed. Full source code, firmware (ESP32), and hardware schematics are provided.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPATIBLE HARDWARE ===== -->
+    <div class="container section" id="devices">
+        <h2>🇨🇳🇮🇳 <span>Compatible Devices</span> (China & India)</h2>
+        <p>ACRS is protocol-compatible with the following commercial resonance-based systems.</p>
+        <table class="device-table">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Device</th>
+                    <th>Technology</th>
+                    <th>Price (USD)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="flag">🇨🇳</span> China</td>
+                    <td><strong>Optune® (爱普盾®)</strong></td>
+                    <td>TTFields (Imported)</td>
+                    <td>~$62,000 (Device) / $18k/month</td>
+                    <td>✅ NMPA Approved</td>
+                </tr>
+                <tr>
+                    <td><span class="flag">🇨🇳</span> China</td>
+                    <td><strong>ASCLU System</strong></td>
+                    <td>TTFields (Domestic)</td>
+                    <td>Lower than imported</td>
+                    <td>✅ NMPA Approved (Dec 2025)</td>
+                </tr>
+                <tr>
+                    <td><span class="flag">🇮🇳</span> India</td>
+                    <td><strong>Cytotron®</strong></td>
+                    <td>RFQMR / FRB</td>
+                    <td>Free (India waitlist) / $55k (Mexico)</td>
+                    <td>✅ FDA Breakthrough</td>
+                </tr>
+                <tr>
+                    <td><span class="flag">🇮🇳</span> India</td>
+                    <td><strong>RF Generator</strong></td>
+                    <td>Radio Frequency</td>
+                    <td>~₹37 Lakh (~$44,000)</td>
+                    <td>✅ Clinical Use</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 14px; color: #4a5a72;">* For integration details, see <code>docs/hardware_schematic.md</code>.</p>
+    </div>
+
+    <!-- ===== QUICK START ===== -->
+    <div class="container section" id="quickstart">
+        <h2>🚀 <span>Quick Start</span></h2>
+        <p>Get the software running in 3 minutes.</p>
+        <div style="background: #1a2332; color: #e0e8f0; padding: 24px; border-radius: 12px; font-family: monospace; margin-top: 16px;">
+            <p style="color: #00d4ff;"># 1. Clone the repository</p>
+            <p>git clone https://github.com/Khan-Ar/Anti-cancer--resonance--software.git</p>
+            <p style="color: #00d4ff; margin-top: 12px;"># 2. Install Python dependencies</p>
+            <p>pip install -r requirements.txt</p>
+            <p style="color: #00d4ff; margin-top: 12px;"># 3. Upload firmware to ESP32 (Arduino IDE)</p>
+            <p>Open firmware/resonance_controller.ino → Upload</p>
+            <p style="color: #00d4ff; margin-top: 12px;"># 4. Run the software</p>
+            <p>python main.py</p>
+        </div>
+        <p style="margin-top: 16px;">Then go to the <strong>📋 Treatment Planner</strong> tab, enter patient data, click <strong>Auto-Calculate</strong>, and hit <strong>Run Full Auto-Treatment</strong>.</p>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <div class="container">
+            <p><strong>ACRS v3.0</strong> — Anti-Cancer Resonance Software</p>
+            <p>Developed by <a href="mailto:amit.khanna.1082@gmail.com">Selim Ahmed</a> &middot; MIT License &middot; Free for everyone</p>
+            <p style="font-size: 13px; margin-top: 6px;">
+                <a href="https://github.com/Khan-Ar/Anti-cancer--resonance--software" target="_blank">View on GitHub</a> &middot; 
+                <a href="#index">Back to Index</a>
+            </p>
+            <div class="license">⚠️ Research/Development Tool — Not for clinical use without regulatory approval</div>
+        </div>
+    </div>
+
+</body>
+</html>
