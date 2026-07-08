@@ -1,0 +1,140 @@
+Here is the comprehensive hardware compatibility and pricing guide for your Anti-cancer--resonance--software.
+
+---
+
+🇮🇳 Indian Devices
+
+1. Cytotron® (RFQMR Device)
+
+Technology: Rotational Field Quantum Magnetic Resonance (RFQMR) delivering Fast Radio Bursts (FRB) via 864 electromagnetic "guns".
+
+Design: Large gantry system with multiple beam-emitting heads. Targets solid tumors in liver, pancreas, and breast.
+
+Price:
+
+· Device Cost: ~₹2 Crore (₹20 million) per unit
+· Treatment Cost: Free in India (research protocols) but waitlist until late 2026; ~$55,000 USD in Mexico
+· Status: U.S. FDA "Breakthrough Device" designation
+
+Availability: Limited clinics in India (Bengaluru), UAE, Mexico, Malaysia.
+
+---
+
+2. Matrix Rhythm Therapy Machine
+
+Technology: Restores rhythmic oscillations of extracellular matrix, cells, and muscles in the 8-12 Hz range.
+
+Design: Compact therapeutic device for bio-resonance therapy.
+
+Price: ~₹5,00,000 / Piece
+
+Availability: Available through Indian medical equipment suppliers.
+
+---
+
+3. Quantum Resonance Magnetic Analyzer
+
+Technology: Sends standard cancer cell waves to specimens; detects resonance signals indicating cancer cells.
+
+Design: Portable diagnostic device.
+
+Price: ~₹5,000 / Piece
+
+Availability: Widely available from Indian suppliers.
+
+---
+
+🇨🇳 Chinese Devices
+
+1. Tumor Treating Fields (TTFields) Devices
+
+Technology: Low-intensity (1-3 V/cm), intermediate-frequency (100-300 kHz) alternating electric fields that disrupt cancer cell division.
+
+---
+
+A. Imported: Optune® / Ai Pu Dun® (Novocure)
+
+· Design: Portable system with backpack battery, electrode arrays worn on the head
+· Price: ~¥1.7 million/year (~$235,000 USD) per patient
+· Monthly Cost: ~¥130,000 RMB (~$18,000 USD)
+· Electrode Patches: ¥3,324.95 per patch; replaced every 3 days
+· Status: Approved in China since May 2020 for glioblastoma
+
+---
+
+B. Domestic: Hai Lai Xin Chuang (海莱新创)
+
+· Design: China's first and world's second company to productize TTF technology
+· Product: EFE-G100 (glioblastoma treatment device)
+· Status: Entered national innovative medical device review in 2023
+· Target Price: ~¥500,000/year per patient (1/3 of imported)
+· Availability: In multi-center clinical trials
+
+---
+
+C. Domestic: An Tai Kang Cheng (安泰康成)
+
+· Product: ASCLU-350 Tumor Electric Field Therapy Device
+· Design: Host unit, junction box, disposable electrode patches, power adapter, Li-ion battery
+· Status: Received NMPA approval (国械注准20253092649) in December 2025
+· Price: "Far lower than global同类 first product"; specific pricing available upon inquiry
+· Availability: Commercially available in China
+
+---
+
+D. Domestic: Tian Te (天特) Large-Scale Device
+
+· Design: Large stationary unit (size of half a room) for全身 application
+· Treatment Time: 15 minutes/day (vs. 15-22 hours for portable devices)
+· Price: 6-month treatment ~¥118,800 RMB (~$16,500 USD)
+· Availability: Offers 15-day free trial
+
+---
+
+💻 Software Integration Guide
+
+For Cytotron (India)
+
+1. Identify communication interface (likely RS-232 or Ethernet)
+2. Request API/protocol documentation from manufacturer (CARD, Bengaluru)
+3. Your software sends frequency/beam commands via socket/Serial
+4. Read feedback (phase, amplitude) for PLL auto-tuning
+
+For TTFields Devices (China)
+
+1. Most are closed, fixed-frequency systems – you cannot alter core output
+2. Your software acts as a Companion Analytics Tool:
+   · Read treatment logs via USB
+   · Track patient compliance (wear time)
+   · Generate efficacy reports
+   · Monitor electrode patch replacement schedules
+
+General Integration Tips
+
+1. Your software's hardware_interface.py currently uses SET_FREQ, READ_PHASE, READ_AMP commands
+2. For Cytotron: Map these to the device's native protocol
+3. For TTFields: Modify the HAL to read data only (no frequency control)
+4. Always test on dummy loads before clinical use
+
+---
+
+📝 Important Notes
+
+1. Prices are approximate and subject to change; contact manufacturers directly for exact quotes
+2. Regulatory Status: Verify current approvals in your country before purchase
+3. Clinical Evidence: Cytotron has limited published data; TTFields are well-established
+4. Software Integration: Requires manufacturer cooperation for API access
+5. Safety: Never connect experimental software to medical devices without proper isolation and testing
+
+---
+
+🔗 Resources
+
+· Cytotron: Centre for Advanced Research and Development (CARD), Bengaluru
+· Hai Lai Xin Chuang: Jiangsu Hailai Xinchuang Medical Technology Co., Ltd.
+· An Tai Kang Cheng: Hunan Antai Kangcheng Biotechnology Co., Ltd.
+· TTFields Research Community: www.ttfieldschina.com
+
+---
+
+Do you need the STM32/Arduino firmware code that implements the SET_FREQ, READ_PHASE, READ_AMP protocol for custom hardware development? I can provide that next.
